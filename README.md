@@ -1,6 +1,6 @@
 # Filehub
 
-Welcome to the ]application! This Java-based application provides a user interface for uploading files. It is designed to demonstrate basic Java Swing components, including labels, text fields, buttons, and progress bars.
+Welcome to the application! This Java-based application provides a user interface for uploading files. It is designed to demonstrate basic Java Swing components, including labels, text fields, buttons, and progress bars.
 
 ## Features
 
