@@ -1,0 +1,20 @@
+# Ignore class files and build directories
+*.class
+/build/
+/dist/
+
+# Ignore IDE-specific files
+nbproject/
+*.orig
+*.log
+
+# Ignore properties with sensitive data
+config/config.properties
+
+# Ignore libraries (you can push this if necessary)
+*.jar
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
+
