@@ -1,20 +1,41 @@
-# Ignore class files and build directories
-*.class
-/build/
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+### IntelliJ IDEA ###
+.idea/modules.xml
+.idea/jarRepositories.xml
+.idea/compiler.xml
+.idea/libraries/
+*.iws
+*.iml
+*.ipr
+
+### Eclipse ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
 /dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
 
-# Ignore IDE-specific files
-nbproject/
-*.orig
-*.log
+### VS Code ###
+.vscode/
 
-# Ignore properties with sensitive data
-config/config.properties
-
-# Ignore libraries (you can push this if necessary)
-*.jar
-
-# Ignore OS-specific files
+### Mac OS ###
 .DS_Store
-Thumbs.db
 
+###out folder
+/out
