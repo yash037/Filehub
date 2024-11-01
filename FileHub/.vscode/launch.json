@@ -1,4 +1,3 @@
-// .vscode/launch.json
 {
     "version": "0.2.0",
     "configurations": [
@@ -7,6 +6,7 @@
             "name": "Launch MainApp",
             "request": "launch",
             "mainClass": "Controller.MainApp",
+            "vmArgs": "-XX:+ShowCodeDetailsInExceptionMessages",
             "projectName": "FileHub"
         }
     ]

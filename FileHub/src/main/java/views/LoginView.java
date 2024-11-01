@@ -3,7 +3,10 @@ package views;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
+
+import java.net.URL;
 
 public class LoginView extends JFrame {
 
@@ -52,7 +55,13 @@ public class LoginView extends JFrame {
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Secure, and Intuitive File Transfers");
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/app.png"))); // NOI18N
+        URL imageUrl = getClass().getResource("/app.png");
+        if (imageUrl != null) {
+            ImageIcon icon = new ImageIcon(imageUrl);
+            jLabel5.setIcon(icon);
+        } else {
+            System.out.println("Image not found.");
+        }
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);

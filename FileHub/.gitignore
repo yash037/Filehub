@@ -1,7 +1,17 @@
-target/
-!.mvn/wrapper/maven-wrapper.jar
-!**/src/main/**/target/
-!**/src/test/**/target/
+# Ignore build outputs
+bin/
+target/ 
+
+# Ignore IDE specific files
+.idea/
+*.iml
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
 
 ## IntelliJ IDEA ###
 .idea/modules.xml
@@ -31,13 +41,14 @@ build/
 !**/src/main/**/build/
 !**/src/test/**/build/
 
-# Ignore build outputs
-bin/
-target/
-
-# Ignore IDE specific files
-.idea/
-*.iml
+# Ignore Maven wrapper files
+!.mvn/
+!.mvn/wrapper/maven-wrapper.jar
 
 # Keep VS Code settings
 !.vscode/
+
+# Ignore local configuration files
+*.log
+*.tmp
+*.bak

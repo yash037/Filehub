@@ -3,6 +3,8 @@ package views;
 import javax.swing.*;
 import java.awt.*;
 
+import java.net.URL;
+
 public class SignUpView extends JFrame {
     public JTextField signupNameField = new JTextField(20);
     public JTextField signupEmailField = new JTextField(20);
@@ -56,8 +58,14 @@ public class SignUpView extends JFrame {
         jLabel4.setFont(new java.awt.Font("Cantarell", 0, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Secure, and Intuitive File Transfers");
-
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/app.png"))); // NOI18N
+        
+        URL imageUrl = getClass().getResource("/app.png");
+        if (imageUrl != null) {
+            ImageIcon icon = new ImageIcon(imageUrl);
+            jLabel5.setIcon(icon);
+        } else {
+            System.out.println("Image not found.");
+        }
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
