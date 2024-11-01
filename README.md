@@ -58,14 +58,23 @@ Welcome to the application! This Java-based application provides a user interfac
         return new PasswordAuthentication(from, "your-email-password");
     ```
 
-### Running the Application
+## Running the Application
 
-1. Compile and run the application:
+### To run via CLI
 
+1. Make sure to install Maven.
+2. Go to the root directory where POM file is present.
+3. Execute the following to compile the project.
     ```sh
-    javac MainApp.java
-    java MainApp
+    mvn package
     ```
+4. Go to the "target" directory and execute the jar file.
+    ```sh
+    java -jar your/jar_file/path.jar
+    ```
+
+ **NOTE:** IntelliJ and other IDEs having built-in Maven support can run the application by running the MainApp.java file (Click the "Run" button).
+
 
 ### Using the Application
 
