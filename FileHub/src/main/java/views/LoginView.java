@@ -112,7 +112,7 @@ public class LoginView extends JFrame {
         title.setFont(new Font("Cantarell", Font.BOLD, 36));
         title.setForeground(new Color(74, 98, 138));
 
-        JLabel emailLabel = new JLabel("Email");
+        JLabel emailLabel = new JLabel("Username or Email");
         emailLabel.setFont(new Font("Cantarell", Font.PLAIN, 20));
         emailLabel.setForeground(new Color(74, 98, 138));
 
