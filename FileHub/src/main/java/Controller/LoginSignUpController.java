@@ -6,11 +6,11 @@ import model.User;
 import service.GenerateOTP;
 import service.SendOTPService;
 import service.UserService;
-import views.ProjectView;
+import views.MainView;
 import views.LoginView;
 import views.SignUpView;
 
-//UI packages
+//action listener and sql packages
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -98,33 +98,47 @@ public class LoginSignUpController {
 
     class LoginButtonListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            String email = loginView.loginEmailField.getText();
+            String user = loginView.userField.getText();
             String password = new String(loginView.loginPasswordField.getPassword());
             String hashedPassword = sha256(password);
 
             // Check if all fields are filled
-            if (email.isEmpty() || password.isEmpty()) {
+            if (user.isEmpty() || password.isEmpty()) {
                 JOptionPane.showMessageDialog(loginView, "Please fill in all required fields.");
                 return;
             }
-            if (!isEmailExists(email)) {
+            
+            boolean Email = false;
+            for (char c : user.toCharArray()) {
+                if(c == '@'){
+                    Email = true;
+                    break;
+                }    
+            }
+            
+            if (Email && !isEmailExists(user)) {
                 JOptionPane.showMessageDialog(loginView, "Email not registered. Please Sign up to create an account");
                 return;
+            }else if(!Email && !isUsernameExists(user)) {
+                JOptionPane.showMessageDialog(loginView, "Username not registered. Please Sign up to create an account");
+                return;
             }
-
-            setEmail(email);
+            
+            if(Email){
+                setEmail(user);
+            }else{
+                setName(user);
+            }
+            
             setPassword(hashedPassword);
             try {
-                if (UserDAO.isUser(getEmail(), getPassword())) {
+                if (UserDAO.isUser(getName(), getEmail(), getPassword())) {
                     JOptionPane.showMessageDialog(loginView, "Login successful!");
-                    // MenuView menuView = new MenuView(getEmail());
-                    // new MenuController(menuView); // Initialize MenuController
-                    // menuView.setVisible(true);
 
                     //main project
-                    ProjectView projectview = new ProjectView();
-                    new ProjectController(projectview);
-                    projectview.setVisible(true);
+                    MainView mainview = new MainView();
+                    new FeatureController(mainview);
+                    mainview.setVisible(true);
 
                     // Close the current frame
                     loginView.dispose();
@@ -194,9 +208,9 @@ public class LoginSignUpController {
                 JOptionPane.showMessageDialog(signUpView, "Signup successful for " + getName() + "!");
 
                 //main project
-                ProjectView projectview = new ProjectView();
-                new ProjectController(projectview);
-                projectview.setVisible(true);
+                MainView mainview = new MainView();
+                new FeatureController(mainview);
+                mainview.setVisible(true);
 
                 signUpView.dispose(); // Close signUpView
             } else {

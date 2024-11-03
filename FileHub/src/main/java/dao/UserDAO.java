@@ -11,24 +11,20 @@ import java.sql.SQLException;
 public class UserDAO {
     public static boolean isEmailExists(String email)throws SQLException {
         Connection connection = MyConnection.getConnection();
-        PreparedStatement pStatement = connection.prepareStatement("select email from users");
+        PreparedStatement pStatement = connection.prepareStatement("SELECT * FROM users WHERE email = ?");
+        pStatement.setString(1, email); 
         ResultSet result = pStatement.executeQuery();
-        while(result.next()){
-            String e = result.getString(1);
-            if(e.equals(email))return true;
-        }
-        return false;
+        
+        return result.next();
     }
 
     public static boolean isUsernameExists(String username) throws SQLException {
         Connection connection = MyConnection.getConnection();
-        PreparedStatement pStatement = connection.prepareStatement("select name from users");
+        PreparedStatement pStatement = connection.prepareStatement("SELECT * FROM users WHERE name = ?");
+        pStatement.setString(1, username); 
         ResultSet result = pStatement.executeQuery();
-        while(result.next()) {
-            String e = result.getString(1);
-            if(e.equals(username))  return true;
-        }
-        return false;
+        
+        return result.next();
     }
 
     public static int saveUser(User user) throws SQLException{
@@ -40,16 +36,24 @@ public class UserDAO {
         return pStatement.executeUpdate();
     }
 
-    public static boolean isUser(String email, String password) throws SQLException {
+    public static boolean isUser(String name, String email, String password) throws SQLException {
         Connection connection = MyConnection.getConnection();
-        PreparedStatement pStatement = connection.prepareStatement("select email, password from users");
-        ResultSet result = pStatement.executeQuery();
-        while(result.next()){
-            String mail = result.getString(1);
-            String pass = result.getString(2);
-            if(mail.equals(email) && pass.equals(password))return true;
+        PreparedStatement pStatement;
+        
+        // Check if email or name is provided
+        if (name == null || name.isEmpty()) {
+            pStatement = connection.prepareStatement("SELECT * FROM users WHERE email = ? AND password = ?");
+            pStatement.setString(1, email);
+        } else {
+            pStatement = connection.prepareStatement("SELECT * FROM users WHERE name = ? AND password = ?");
+            pStatement.setString(1, name);
         }
-        return false;
+        
+        pStatement.setString(2, password);
+        ResultSet result = pStatement.executeQuery();
+        
+        return result.next();
     }
+    
 
 }

@@ -1,6 +1,7 @@
 package Controller;
 
 import views.LoginView;
+import views.MainView;
 import views.SignUpView;
 
 import javax.swing.SwingUtilities;
